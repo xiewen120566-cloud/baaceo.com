@@ -22,9 +22,14 @@ export default async function BaseLayout({ children, locale }: Props) {
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
+var __gptStubPubads = {
+  collapseEmptyDivs: function() { return __gptStubPubads; },
+  addEventListener: function() { return __gptStubPubads; },
+  enableSingleRequest: function() { return __gptStubPubads; }
+};
 window.googletag = window.googletag || {
   cmd: [],
-  pubads: function() { return {}; },
+  pubads: function() { return __gptStubPubads; },
   enableServices: function() {},
   defineSlot: function() { return { addService: function() { return {}; } }; }
 };
@@ -43,19 +48,26 @@ window.googletag = window.googletag || {
           dangerouslySetInnerHTML={{
             __html: `
 window.googletag = window.googletag || {cmd: []};
-googletag.cmd.push(function() {
-  googletag.defineSlot('/23319049762/ad-2', [320, 100], 'div-gpt-ad-1775218163351-0').addService(googletag.pubads());
-  googletag.defineSlot('/23319049762/ad-2', [320, 100], 'div-gpt-ad-1775218163351-1').addService(googletag.pubads());
-  googletag.pubads().collapseEmptyDivs(true);
-  googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-    console.log('GAM slotRenderEnded:', {
-      slotId: event.slot.getSlotElementId(),
-      isEmpty: event.isEmpty,
-      size: event.size
+window.googletag.cmd.push(function() {
+  window.googletag.defineSlot('/23319049762/ad-2', [320, 100], 'div-gpt-ad-1775218163351-0').addService(window.googletag.pubads());
+  window.googletag.defineSlot('/23319049762/ad-2', [320, 100], 'div-gpt-ad-1775218163351-1').addService(window.googletag.pubads());
+  var pubads = window.googletag.pubads();
+  if (pubads && typeof pubads.collapseEmptyDivs === 'function') {
+    pubads.collapseEmptyDivs(true);
+  }
+  if (pubads && typeof pubads.addEventListener === 'function') {
+    pubads.addEventListener('slotRenderEnded', function(event) {
+      console.log('GAM slotRenderEnded:', {
+        slotId: event.slot.getSlotElementId(),
+        isEmpty: event.isEmpty,
+        size: event.size
+      });
     });
-  });
-  googletag.pubads().enableSingleRequest();
-  googletag.enableServices();
+  }
+  if (pubads && typeof pubads.enableSingleRequest === 'function') {
+    pubads.enableSingleRequest();
+  }
+  window.googletag.enableServices();
 });
             `,
           }}
