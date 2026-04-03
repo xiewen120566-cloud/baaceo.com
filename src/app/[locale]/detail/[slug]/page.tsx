@@ -75,13 +75,11 @@ export default async function Page({
     <>
       <Header hostname={hostname} categories={categories} />
       <Container maxWidth="container.xl" px={{ base: 3, md: 4, lg: 6 }} pt={{ base: 4, md: 6 }}>
-        <ElTemplate 
+        <ElTemplate
           id="goplaygame-Detail-MultiAd"
-          className="adsbygoogle"
-          data-ad-client="ca-pub-3667734512479064"
-          data-ad-slot="8602889336"
-          data-ad-format="autorelaxed"
-          style={{ display: "block" }}
+          adUnitPath="/23319049762/ad-2"
+          sizes={[320, 100]}
+          style={{ width: 320, height: 100 }}
         />
       </Container>
       <Container maxWidth="container.xl" px={{ base: 3, md: 4, lg: 6 }} py={{ base: 4, md: 6 }}>
@@ -169,14 +167,11 @@ export default async function Page({
           </SimpleGrid>
         </Box>
         <Info locale={locale} />
-        <ElTemplate 
+        <ElTemplate
           id="goplaygame-Detail-Banner"
-          className="adsbygoogle"
-          data-ad-client="ca-pub-3667734512479064"
-          data-ad-slot="5269504787"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-          style={{ display: "block" }}
+          adUnitPath="/23319049762/ad-2"
+          sizes={[320, 100]}
+          style={{ width: 320, height: 100 }}
         />
       </Container>
       <Footer />

@@ -12,6 +12,7 @@ import {
   Heading,
   Box,
 } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { getTargetHref, randomGames } from "@/utils";
@@ -19,7 +20,7 @@ import Info from "@/components/info";
 import { getTranslations } from "next-intl/server";
 import GameItem from "@/components/game-item";
 import { FaChevronRight } from "react-icons/fa6";
-import Script from "next/script";
+const ElTemplate = dynamic(() => import("@/components/el-temlplate"), { ssr: false })
 interface Props {
   params: {
     locale: Locale;
@@ -50,21 +51,12 @@ export default async function Page({
     <>
       <Header hostname={hostname} categories={categories} />
       <Container maxWidth="container.xl" px={{ base: 3, md: 4, lg: 6 }} py={{ base: 4, md: 6 }}>
-        <div id="div-gpt-ad-1775218163351-0" style={{ width: 320, height: 100 }}>
-          <Script
-            id="gpt-display-div-gpt-ad-1775218163351-0"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-if (window.googletag && googletag.cmd) {
-  googletag.cmd.push(function() { googletag.display('div-gpt-ad-1775218163351-0'); });
-} else {
-  console.warn('GAM not initialized: div-gpt-ad-1775218163351-0');
-}
-              `,
-            }}
-          />
-        </div>
+        <ElTemplate
+          id="div-gpt-ad-1775218163351-0"
+          adUnitPath="/23319049762/ad-2"
+          sizes={[320, 100]}
+          style={{ width: 320, height: 100 }}
+        />
         <VStack alignItems="stretch" gap={{ base: 6, md: 8 }}>
           <Box
             bg="surface.1"
@@ -217,21 +209,12 @@ if (window.googletag && googletag.cmd) {
           })}
           <Info locale={locale} />
         </VStack>
-        <div id="div-gpt-ad-1775218163351-1" style={{ width: 320, height: 100 }}>
-          <Script
-            id="gpt-display-div-gpt-ad-1775218163351-1"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-if (window.googletag && googletag.cmd) {
-  googletag.cmd.push(function() { googletag.display('div-gpt-ad-1775218163351-1'); });
-} else {
-  console.warn('GAM not initialized: div-gpt-ad-1775218163351-1');
-}
-              `,
-            }}
-          />
-        </div>
+        <ElTemplate
+          id="div-gpt-ad-1775218163351-1"
+          adUnitPath="/23319049762/ad-2"
+          sizes={[320, 100]}
+          style={{ width: 320, height: 100 }}
+        />
       </Container>
       <Footer />
     </>

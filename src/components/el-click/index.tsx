@@ -22,13 +22,20 @@ const ElClick: React.FC = () => {
       const activeElement = document.activeElement as HTMLIFrameElement | null;
       if (!activeElement || activeElement.tagName !== "IFRAME") return null;
 
-      const adContainer = activeElement.closest(".adsbygoogle");
+      const adContainer =
+        activeElement.closest(".gpt-slot") ||
+        activeElement.closest(".adsbygoogle") ||
+        activeElement.closest(".ad-placeholder");
       const iframeSrc = activeElement.getAttribute("src");
       if (adContainer && iframeSrc) {
         const formatIframeSrc = new URL(iframeSrc)
         const iframeSearchParams = new URLSearchParams(formatIframeSrc.search)
+        const slotId =
+          adContainer.getAttribute("id") ??
+          (adContainer.querySelector?.(".gpt-slot[id]") as HTMLElement | null)?.getAttribute("id") ??
+          null;
         return {
-          adContainerId: adContainer.getAttribute("id"),
+          adContainerId: slotId,
           googleQueryId: activeElement.getAttribute("data-google-query-id"),
           adClickTime: Date.now(),
           publisherId: iframeSearchParams.get("client"),
