@@ -32,6 +32,29 @@ window.googletag = window.googletag || { cmd: [] };
           crossOrigin="anonymous"
           strategy="beforeInteractive"
         />
+        <Script
+          id="google-gpt-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+window.googletag = window.googletag || { cmd: [] };
+window.googletag.cmd.push(function() {
+  window.googletag.defineSlot(
+    '/23319049762/ad-2',
+    [[300, 50], [300, 250], [728, 90], [300, 100]],
+    'div-gpt-ad-1775227994462-0'
+  ).addService(window.googletag.pubads());
+  window.googletag.defineSlot(
+    '/23319049762/ad-2',
+    [[300, 50], [300, 250], [728, 90], [300, 100]],
+    'div-gpt-ad-1775227994462-1'
+  ).addService(window.googletag.pubads());
+  window.googletag.pubads().enableSingleRequest();
+  window.googletag.enableServices();
+});
+            `,
+          }}
+        />
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>

@@ -64,10 +64,8 @@ export default async function Page({
       <Header categories={categories} hostname={hostname} />
       <Container maxWidth="container.xl" px={{ base: 3, md: 4, lg: 6 }} py={{ base: 4, md: 6 }}>
         <ElTemplate
-          id="goplaygame-Category-MultiAd"
-          adUnitPath="/23319049762/ad-2"
-          sizes={[320, 100]}
-          style={{ width: 320, height: 100 }}
+          id="div-gpt-ad-1775227994462-0"
+          style={{ minWidth: 300, minHeight: 50 }}
         />
         <VStack alignItems="stretch" gap={{ base: 6, md: 8 }}>
           <Box
@@ -113,10 +111,8 @@ export default async function Page({
           <Info locale={locale} />
         </VStack>
         <ElTemplate
-          id="goplaygame-Category-Banner"
-          adUnitPath="/23319049762/ad-2"
-          sizes={[320, 100]}
-          style={{ width: 320, height: 100 }}
+          id="div-gpt-ad-1775227994462-1"
+          style={{ minWidth: 300, minHeight: 50 }}
         />
       </Container>
       <Footer />
