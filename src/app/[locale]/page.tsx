@@ -50,13 +50,17 @@ export default async function Page({
     <>
       <Header hostname={hostname} categories={categories} />
       <Container maxWidth="container.xl" px={{ base: 3, md: 4, lg: 6 }} py={{ base: 4, md: 6 }}>
-        <div id="div-gpt-ad-1775218163351-0" style={{ minWidth: 320, minHeight: 100 }}>
+        <div id="div-gpt-ad-1775218163351-0" style={{ width: 320, height: 100 }}>
           <Script
             id="gpt-display-div-gpt-ad-1775218163351-0"
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1775218163351-0'); });
+if (window.googletag && googletag.cmd) {
+  googletag.cmd.push(function() { googletag.display('div-gpt-ad-1775218163351-0'); });
+} else {
+  console.warn('GAM not initialized: div-gpt-ad-1775218163351-0');
+}
               `,
             }}
           />
@@ -213,13 +217,17 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1775218163351-0');
           })}
           <Info locale={locale} />
         </VStack>
-        <div id="div-gpt-ad-1775218163351-1" style={{ minWidth: 320, minHeight: 100 }}>
+        <div id="div-gpt-ad-1775218163351-1" style={{ width: 320, height: 100 }}>
           <Script
             id="gpt-display-div-gpt-ad-1775218163351-1"
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1775218163351-1'); });
+if (window.googletag && googletag.cmd) {
+  googletag.cmd.push(function() { googletag.display('div-gpt-ad-1775218163351-1'); });
+} else {
+  console.warn('GAM not initialized: div-gpt-ad-1775218163351-1');
+}
               `,
             }}
           />

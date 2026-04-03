@@ -18,6 +18,20 @@ export default async function BaseLayout({ children, locale }: Props) {
     <html lang={locale}>
       <head>
         <Script
+          id="google-gpt-stub"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+window.googletag = window.googletag || {
+  cmd: [],
+  pubads: function() { return {}; },
+  enableServices: function() {},
+  defineSlot: function() { return { addService: function() { return {}; } }; }
+};
+            `,
+          }}
+        />
+        <Script
           async
           src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
           crossOrigin="anonymous"
@@ -32,6 +46,14 @@ window.googletag = window.googletag || {cmd: []};
 googletag.cmd.push(function() {
   googletag.defineSlot('/23319049762/ad-2', [320, 100], 'div-gpt-ad-1775218163351-0').addService(googletag.pubads());
   googletag.defineSlot('/23319049762/ad-2', [320, 100], 'div-gpt-ad-1775218163351-1').addService(googletag.pubads());
+  googletag.pubads().collapseEmptyDivs(true);
+  googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+    console.log('GAM slotRenderEnded:', {
+      slotId: event.slot.getSlotElementId(),
+      isEmpty: event.isEmpty,
+      size: event.size
+    });
+  });
   googletag.pubads().enableSingleRequest();
   googletag.enableServices();
 });
