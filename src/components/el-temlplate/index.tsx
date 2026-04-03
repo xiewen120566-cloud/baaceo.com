@@ -15,7 +15,7 @@ interface AdTemplateProps {
   channelId?: string;
 }
 
-const ElTemplate = forwardRef<HTMLModElement, AdTemplateProps>(function AdTemplate(props, ref) {
+const ElTemplate = forwardRef<HTMLDivElement, AdTemplateProps>(function AdTemplate(props, ref) {
   const { id, className, adUnitPath, sizes, style } = props;
 
   useEffect(() => {
