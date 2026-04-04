@@ -39,16 +39,28 @@ window.googletag = window.googletag || { cmd: [] };
             __html: `
 window.googletag = window.googletag || { cmd: [] };
 window.googletag.cmd.push(function() {
-  window.googletag.defineSlot(
+  window.__gptSlots = window.__gptSlots || {};
+  window.__gptSlots['div-gpt-ad-1775227994462-0'] = window.googletag.defineSlot(
     '/23319049762/ad-2',
     [[300, 50], [300, 250], [728, 90], [300, 100]],
     'div-gpt-ad-1775227994462-0'
   ).addService(window.googletag.pubads());
-  window.googletag.defineSlot(
+  window.__gptSlots['div-gpt-ad-1775227994462-1'] = window.googletag.defineSlot(
     '/23319049762/ad-2',
     [[300, 50], [300, 250], [728, 90], [300, 100]],
     'div-gpt-ad-1775227994462-1'
   ).addService(window.googletag.pubads());
+  window.googletag.pubads().collapseEmptyDivs(true);
+  window.googletag.pubads().addEventListener('slotResponseReceived', function(event) {
+    console.log('GAM slotResponseReceived:', event.slot.getSlotElementId());
+  });
+  window.googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+    console.log('GAM slotRenderEnded:', {
+      slotId: event.slot.getSlotElementId(),
+      isEmpty: event.isEmpty,
+      size: event.size
+    });
+  });
   window.googletag.pubads().enableSingleRequest();
   window.googletag.enableServices();
 });

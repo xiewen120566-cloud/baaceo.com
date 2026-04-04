@@ -22,12 +22,24 @@ const ElTemplate = forwardRef<HTMLDivElement, AdTemplateProps>(function AdTempla
   useEffect(() => {
     const w = window as unknown as {
       googletag?: { cmd: Array<() => void> } & Record<string, unknown>;
+      __gptSlots?: Record<string, unknown>;
+      __gptRefreshed?: Record<string, boolean>;
     };
 
     w.googletag = w.googletag || { cmd: [] };
     w.googletag.cmd.push(() => {
       const googletag = w.googletag as any;
       googletag.display(id);
+      const slot = w.__gptSlots?.[id];
+      if (slot) {
+        w.__gptRefreshed = w.__gptRefreshed || {};
+        if (!w.__gptRefreshed[id] && googletag.pubads) {
+          w.__gptRefreshed[id] = true;
+          try {
+            googletag.pubads().refresh([slot]);
+          } catch (_) {}
+        }
+      }
     });
   }, [id]);
 
