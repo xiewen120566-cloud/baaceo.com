@@ -65,7 +65,7 @@ export default async function Page({
       <Container maxWidth="container.xl" px={{ base: 3, md: 4, lg: 6 }} py={{ base: 4, md: 6 }}>
         <ElTemplate
           id="div-gpt-ad-1775227994462-0"
-          style={{ minWidth: 300, minHeight: 50 }}
+          style={{ minWidth: 300, minHeight: 250 }}
         />
         <VStack alignItems="stretch" gap={{ base: 6, md: 8 }}>
           <Box
@@ -110,10 +110,6 @@ export default async function Page({
           </Box>
           <Info locale={locale} />
         </VStack>
-        <ElTemplate
-          id="div-gpt-ad-1775227994462-1"
-          style={{ minWidth: 300, minHeight: 50 }}
-        />
       </Container>
       <Footer />
     </>

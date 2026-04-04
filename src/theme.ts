@@ -89,6 +89,24 @@ export default extendTheme({
       },
       "a": {
         color: "inherit"
+      },
+      ".gpt-sticky-bottom": {
+        position: "fixed",
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 2147483647,
+        display: "flex",
+        justifyContent: "center",
+        pointerEvents: "none",
+        "@media (min-width: 768px)": {
+          display: "none"
+        }
+      },
+      ".gpt-sticky-bottom__inner": {
+        pointerEvents: "auto",
+        minWidth: "320px",
+        minHeight: "50px"
       }
     }),
   },

@@ -77,7 +77,7 @@ export default async function Page({
       <Container maxWidth="container.xl" px={{ base: 3, md: 4, lg: 6 }} pt={{ base: 4, md: 6 }}>
         <ElTemplate
           id="div-gpt-ad-1775227994462-0"
-          style={{ minWidth: 300, minHeight: 50 }}
+          style={{ minWidth: 300, minHeight: 250 }}
         />
       </Container>
       <Container maxWidth="container.xl" px={{ base: 3, md: 4, lg: 6 }} py={{ base: 4, md: 6 }}>
@@ -165,10 +165,6 @@ export default async function Page({
           </SimpleGrid>
         </Box>
         <Info locale={locale} />
-        <ElTemplate
-          id="div-gpt-ad-1775227994462-1"
-          style={{ minWidth: 300, minHeight: 50 }}
-        />
       </Container>
       <Footer />
     </>
